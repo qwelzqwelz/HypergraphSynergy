@@ -97,7 +97,8 @@ def test(drug_fea_set, cline_fea_set, synergy_adj, index, label, alpha):
 if __name__ == '__main__':
     dataset_name = 'ALMANAC'  # or ONEIL
     seed = 0
-    cv_mode_ls = [1, 2, 3]
+    # cv_mode_ls = [1, 2, 3]
+    cv_mode_ls = [2]
     epochs = 2000
     learning_rate = 0.0001
     L2 = 1e-4
