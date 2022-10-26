@@ -1,0 +1,8 @@
+__pycache__/
+
+HyperGraphSynergy/result_cls/
+HyperGraphSynergy/result_reg/
+
+HyperGraphSynergy/*.pth
+HyperGraphSynergy/*.log
+HyperGraphSynergy/*.tar

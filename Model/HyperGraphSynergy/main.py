@@ -119,6 +119,7 @@ if __name__ == '__main__':
             cv_data = np.unique(synergy_cv[:, 2])  # cline_level
         else:
             cv_data = np.unique(np.vstack([synergy_cv[:, 0], synergy_cv[:, 1]]), axis=1).T  # drug pairs_level
+        print(f"cv-mode: {cv_mode}")
         # ---5CV
         final_metric = np.zeros(4)
         fold_num = 0

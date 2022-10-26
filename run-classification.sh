@@ -1,0 +1,2 @@
+nohup python -u /home/lizhuang@corp.sse.tongji.edu.cn/HypergraphSynergy/Model/HyperGraphSynergy/main.py \
+    >/home/lizhuang@corp.sse.tongji.edu.cn/HypergraphSynergy/Model/HyperGraphSynergy/main.py.log 2>&1 &
