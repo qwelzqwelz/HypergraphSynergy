@@ -76,6 +76,8 @@ class PrintableHypergraphConv(HypergraphConv):
         print("D_zero_index", [i for i, x in enumerate(D_zero_index) if x == True])
         print("hp-x", x.shape)
         print("hp-x", x[D_zero_index,:])
+        for i in range(129, 129 + 4):
+            print(f"hp-x[{i}]", x[i,:])
         ###############################################################################
 
         out = self.propagate(hyperedge_index, x=x, norm=B, alpha=alpha,
@@ -107,11 +109,17 @@ class HgnnEncoder(torch.nn.Module):
 
     def forward(self, x, edge):
         x = self.conv1(x, edge)
-        print("conv1-result[130]:", x[130,:])
-        print("conv1-result[131]:", x[131,:])
+        for i in range(129, 129 + 4):
+            print(f"conv1-result[{i}]:", x[i,:])
         x = self.batch1(self.act(x))
-        x = self.batch2(self.act(self.conv2(x, edge)))
-        x = self.act(self.conv3(x, edge))
+        x = self.conv2(x, edge)
+        for i in range(129, 129 + 4):
+            print(f"conv2-result[{i}]:", x[i,:])
+        x = self.batch2(self.act(x))
+        x = self.conv3(x, edge)
+        for i in range(129, 129 + 4):
+            print(f"conv3-result[{i}]:", x[i,:])
+        x = self.act(x)
         return x
 
 
@@ -208,8 +216,8 @@ class HypergraphSynergy(torch.nn.Module):
         drug_embed, cellline_embed = self.bio_encoder(drug_feature, drug_adj, ibatch, gexpr_data)
         merge_embed = torch.cat((drug_embed, cellline_embed), 0)
         graph_embed = self.graph_encoder(merge_embed, adj)
-        print("graph_embed[130]", graph_embed[130,:])
-        print("graph_embed[131]", graph_embed[131,:])
+        for i in range(129, 129 + 4):
+            print(f"graph_embed[{i}]", graph_embed[i,:])
         drug_emb, cline_emb = graph_embed[:drug_num], graph_embed[drug_num:]
         rec_drug = torch.sigmoid(torch.mm(torch.mm(drug_emb, self.drug_rec_weight), drug_emb.t()))
         rec_cline = torch.sigmoid(torch.mm(torch.mm(cline_emb, self.cline_rec_weight), cline_emb.t()))

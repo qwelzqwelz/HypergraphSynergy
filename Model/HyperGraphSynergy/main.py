@@ -178,6 +178,7 @@ if __name__ == '__main__':
                           'AUC: {:.6f},'.format(val_metric[0]), 'AUPR: {:.6f},'.format(val_metric[1]),
                           'F1: {:.6f},'.format(val_metric[2]), 'ACC: {:.6f},'.format(val_metric[3]))
                 torch.save(model.state_dict(), '{}.pth'.format(epoch))
+                print(f"epoch-{epoch} finished")
                 if val_metric[0] > best_metric[0]:
                     best_metric = val_metric
                     best_epoch = epoch
